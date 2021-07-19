@@ -1,0 +1,19 @@
+version: '3'
+services:
+    redis:
+        image: ssh_img_b02:latest
+        container_name: redis_test_001
+        hostname: redis_test_001
+        restart: always
+        volumes:
+            - /root/redis/redisWork/:/redisWork
+        ports:
+            - "80:80"
+            - "220:22"
+            - "6379:6379"
+        expose:
+            - "80"
+            - "6379"
+            - "22"
+        #command: '/usr/bin/supervisord'
+        command: '/redisWork/usr/local/bin/redis-server /redisWork/etc/redis/6379.conf '
